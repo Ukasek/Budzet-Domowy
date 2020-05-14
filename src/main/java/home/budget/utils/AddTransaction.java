@@ -1,7 +1,7 @@
 package home.budget.utils;
 
 import home.budget.Transaction;
-import home.budget.TransactionDAO;
+import home.budget.TransactionDao;
 
 import java.util.Scanner;
 
@@ -19,12 +19,12 @@ public class AddTransaction {
         double amount = scanner.nextDouble();
 
         System.out.println("Data transakcji:");
-        int date = scanner.nextInt();
+        String date = scanner.nextLine();
 
 
         Transaction transaction = new Transaction(type, description, amount, date);
 
-        TransactionDAO transactionDAO = new TransactionDAO();
+        TransactionDao transactionDAO = new TransactionDao();
         transactionDAO.save(transaction);
     }
 }

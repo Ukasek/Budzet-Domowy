@@ -5,20 +5,20 @@ public class Transaction {
     private String type;
     private String description;
     private double amount;
-    private int date;
+    private String date;
 
     public Transaction() {
 
     }
 
-    public Transaction(String type, String description, double amount, int date) {
+    public Transaction(String type, String description, double amount, String date) {
         this.type = type;
         this.description = description;
         this.amount = amount;
         this.date = date;
     }
 
-    public Transaction(Long id, String type, String description, double amount, int date) {
+    public Transaction(Long id, String type, String description, double amount, String date) {
         this.id = id;
         this.type = type;
         this.description = description;
@@ -58,11 +58,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public int getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

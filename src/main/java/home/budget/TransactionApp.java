@@ -34,4 +34,5 @@ public class TransactionApp {
                 System.out.println("Błędny wybór");
         }
     }
+
 }
