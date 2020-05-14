@@ -7,9 +7,7 @@ public class Transaction {
     private double amount;
     private String date;
 
-    public Transaction() {
 
-    }
 
     public Transaction(String type, String description, double amount, String date) {
         this.type = type;

@@ -2,7 +2,6 @@ package home.budget;
 
 import java.sql.*;
 import java.util.Optional;
-import java.util.Scanner;
 
 public class TransactionDao {
 
@@ -40,14 +39,19 @@ public class TransactionDao {
 
     public void update(Transaction transaction) {
         String sql = "UPDATE transaction SET type = ?, description = ?, amount = ?, date = ? WHERE id = ?";
+
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, transaction.getType());
-            statement.setString(2, transaction.getDescription());
-            statement.setDouble(3, transaction.getAmount());
-            statement.setString(4, transaction.getDate());
-            statement.setLong(5, transaction.getId());
-            statement.executeUpdate();
+            if (transaction != null) {
+                PreparedStatement statement = connection.prepareStatement(sql);
+                statement.setString(1, transaction.getType());
+                statement.setString(2, transaction.getDescription());
+                statement.setDouble(3, transaction.getAmount());
+                statement.setString(4, transaction.getDate());
+                statement.setLong(5, transaction.getId());
+                statement.executeUpdate();
+            } else {
+                System.out.println("Nie znaleziono transakcji");
+            }
         } catch (SQLException e) {
             System.err.println("Błąd podczas edytowania danych " + e.getMessage());
         }
@@ -56,7 +60,6 @@ public class TransactionDao {
 
     public void delete(long id) {
         String sql = "DELETE FROM transaction WHERE id = ?";
-
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setLong(1, id);
